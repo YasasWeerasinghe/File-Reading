@@ -1,0 +1,231 @@
+import java.io.*;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Yasas Weerasingh
+ */
+public class PreWorkshop {
+
+    
+    
+    public static void main(String[] args) throws IOException {
+     
+        Scanner sc = new Scanner(System.in);
+        String process="";
+        
+          do{
+        System.out.println("                 * Pre Workshop *     ");
+        System.out.println("=====================================================");
+        System.out.println("");
+        System.out.println(">> Menu options << (Enter the letters to proceed)");
+        System.out.println("------------------");
+        System.out.println("U - Unique words from both files");
+        System.out.println("A - All words of both files");
+        System.out.println("N - All words from 1st file");
+        System.out.println("M - All words from 2nd file");
+        System.out.println("D - Different words from both files");
+        System.out.println("X - Exit from the application");
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("*Use cappital letters to enter the process*");
+        System.out.print("Enter the process: ");
+        process=sc.nextLine();
+        System.out.println("------------------------------------");
+        //System.out.println("");
+
+            switch(process){
+         
+            case "U":uniqueWords();
+            break;
+                   
+          
+            case "A":allWordsFromBoth();
+            break;
+            
+            
+         
+            case "N":allFrom1st();
+            break;
+            
+         
+            case "M":allFrom2nd();
+            break;
+            
+          
+            case "D":differentWords();
+            break;
+            
+              
+            case "X":exit();
+            break;
+            
+            
+            }
+            }while(process!="X"||process!="X");
+            }
+            
+        public static void uniqueWords() {
+            
+        String file_1 = "file 1.txt";
+        String file_2 = "file 2.txt";
+
+        //reference one line at a time
+        String line = null;
+        String line2 = null;
+
+        try {
+            //reads text files in the default encoding.
+            FileReader fileR = new FileReader(file_1);
+            FileReader fileR2 = new FileReader(file_2);
+
+            BufferedReader bReader = new BufferedReader(fileR);
+            BufferedReader bReader2 = new BufferedReader(fileR2);
+                       
+             while (((line = bReader.readLine()) != null)  &&((line2 = bReader2.readLine()) != null)) {
+       if (!line.equalsIgnoreCase(line2)) { 
+        } else {
+            System.out.println(line);
+        }
+    }
+            bReader.close();  
+            bReader2.close();  
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println("Unable to open the file '" + file_1 + "'" + file_2 + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println("Error reading the file '" + file_1 + "'" + file_2 + "'");                  
+        }
+              System.out.println("------------------------------------");
+        }
+        
+        public static void allWordsFromBoth() {
+            
+        String file_1 = "file 1.txt";
+        String file_2 = "file 2.txt";
+
+        
+        String line = null;
+        String line2 = null;
+
+        try {
+          
+            FileReader fileR = new FileReader(file_1);
+            FileReader fileR2 = new FileReader(file_2);
+
+            BufferedReader bReader = new BufferedReader(fileR);
+            BufferedReader bReader2 = new BufferedReader(fileR2);
+
+            while((line = bReader.readLine()) != null && (line2 = bReader2.readLine()) != null ) {
+                System.out.println(line);
+                System.out.println(line2);
+            }   
+
+            bReader.close();  
+            bReader2.close();  
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println("Unable to open the file '" + file_1 + "'" + file_2 + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println("Error reading the file '" + file_1 + "'" + file_2 + "'");                  
+            
+        }
+         System.out.println("------------------------------------");
+                        
+        }
+        
+        public static void allFrom1st() {
+            String file_1 = "file 1.txt";
+
+      
+        String line = null;
+
+        try {
+   
+            FileReader fileR = new FileReader(file_1);
+
+            BufferedReader bReader = new BufferedReader(fileR);
+
+            while((line = bReader.readLine()) != null) {
+                System.out.println(line);
+            }   
+
+            bReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println("Unable to open the file '" + file_1 + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println("Error reading the file '" + file_1 + "'");           
+        } 
+         System.out.println("------------------------------------");
+        }
+        
+        public static void allFrom2nd() {
+            String file_2 = "file 2.txt";
+
+        
+        String line = null;
+
+        try {
+          
+            FileReader fileR = new FileReader(file_2);
+
+            BufferedReader bReader = new BufferedReader(fileR);
+
+            while((line = bReader.readLine()) != null) {
+                System.out.println(line);
+            }   
+
+            bReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println("Unable to open the file '" + file_2 + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println("Error reading the file '" + file_2 + "'");                  
+        } 
+         System.out.println("------------------------------------");
+        }
+        
+        public static void differentWords() {
+            
+        String file_1 = "file 1.txt";
+        String file_2 = "file 2.txt";
+
+        
+        String line = null;
+        String line2 = null;
+
+        try {
+          
+            FileReader fileR = new FileReader(file_1);
+            FileReader fileR2 = new FileReader(file_2);
+
+            BufferedReader bReader = new BufferedReader(fileR);
+            BufferedReader bReader2 = new BufferedReader(fileR2);
+            
+    while (((line = bReader.readLine()) != null)  &&((line2 = bReader2.readLine()) != null)) {
+        if (!line.equalsIgnoreCase(line2)) {   
+            System.out.println( line + "\n" + line2 );
+        }
+    }
+            bReader.close();  
+            bReader2.close();  
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println("Unable to open the file '" + file_1 + "'" + file_2 + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println("Error reading the file '" + file_1 + "'" + file_2 + "'");                  
+        }
+          System.out.println("------------------------------------");
+        }
+        public static void exit() {
+             System.exit(0);
+        }
+        
+        
+        
+}
